@@ -8,7 +8,7 @@ const limiter = rateLimit({
 
 const corsMiddleware = (app) => {
     const corsOptions = {
-        origin: [   'https://note-ku-hdu1.vercel.app','http://localhost:5173','http://localhost:3000' ],
+        origin: [   'https://note-ku.vercel.app','http://localhost:5173','http://localhost:3000' ],
         methods: ['GET', 'POST', 'PUT', 'DELETE'],
         allowedHeaders: ['Content-Type', 'Authorization']
     };
