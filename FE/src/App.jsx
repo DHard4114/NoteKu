@@ -7,6 +7,7 @@ import NoteForm from "./page/NoteForm";
 import NoteList from "./page/NoteList";
 import NavBar from "./component/NavBar";
 import Footer from "./component/Footer";
+import ProtectedRoute from "./component/ProtectRoute";
 import './App.css';
 
 function App() {
@@ -18,8 +19,22 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/about" element={<About />} />
-          <Route path="/create-note" element={<NoteForm />} />
-          <Route path="/notes" element={<NoteList />} />  {/* Rute untuk melihat daftar catatan */}
+          <Route
+            path="/create-note"
+            element={
+              <ProtectedRoute>
+                <NoteForm />
+              </ProtectedRoute>
+            }
+          />
+          <Route
+            path="/notes"
+            element={
+              <ProtectedRoute>
+                <NoteList />
+              </ProtectedRoute>
+            }
+          />
         </Routes>
       <Footer />
     </>

@@ -1,4 +1,5 @@
 const db = require("../database/pg.database");
+const { validate: isUUID } = require('uuid');
 
 exports.getNotes = async () => {
     try {
@@ -11,10 +12,21 @@ exports.getNotes = async () => {
 
 exports.getNotesByUserId = async (userId) => {
     try {
-        const res = await db.query("SELECT * FROM notes WHERE user_id = $1", [userId]);
-        return res.rows;
-    } catch (error) {
-        console.error("Error executing query", error);
+        if (!isUUID(userId)) {
+            throw new Error(`Invalid UUID format: ${userId}`);
+        }
+
+        const query = 'SELECT * FROM notes WHERE user_id = $1';
+        const result = await db.query(query, [userId]);
+        
+        if (result && result.rows) {
+            return result.rows;
+        } else {
+            throw new Error('No notes found');
+        }
+    } catch (err) {
+        console.error('Error executing query:', err);
+        throw err;
     }
 };
 
