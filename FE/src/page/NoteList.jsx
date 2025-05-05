@@ -22,13 +22,12 @@ const NoteList = () => {
             setLoading(false);
             return;
         }
-    
+
         try {
             setLoading(true);
             const response = await axios.get(`${API_BASE}/note/user/${userId}`);
-            console.log('Response:', response);
-            if (response.data.success && Array.isArray(response.data.data)) {
-                setNotes(response.data.data);
+            if (response.data.success && Array.isArray(response.data.payload)) {
+                setNotes(response.data.payload);
                 setError('');
             } else {
                 setNotes([]);
@@ -42,10 +41,10 @@ const NoteList = () => {
             setLoading(false);
         }
     };
-    
+
     useEffect(() => {
         fetchNotes();
-    }, [userId, API_BASE]);
+    }, []);  // Empty dependency array, only run once on mount
 
     const showMessage = (msg, type) => {
         setMessage(msg);
@@ -209,7 +208,7 @@ const NoteList = () => {
                         notes.map((note) => (
                             <NoteCard
                                 key={note.id}
-                                id={note.id}
+                                id={note.user_id}
                                 title={note.title}
                                 content={note.content}
                                 onEdit={() => handleEdit(note)}

@@ -58,7 +58,7 @@ const Register = () => {
         <form onSubmit={handleRegister} className="mt-6 space-y-4">
           <div>
             <label className="block text-sm font-medium">Name</label>
-            <input 
+            <input
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -78,7 +78,7 @@ const Register = () => {
           </div>
           <div>
             <label className="block text-sm font-medium">Password</label>
-            <input 
+            <input
               type="password"
               value={password}
               onChange={(e) => setPassword(e.target.value)}

@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "are-we-there-yet": "^4.0.2",
     "bcrypt": "^5.1.1",
     "cors": "^2.8.5",
     "dotenv": "^16.5.0",
@@ -17,8 +18,13 @@
     "express-mongo-sanitize": "^2.2.0",
     "express-rate-limit": "^7.5.0",
     "express-validator": "^7.2.1",
+    "gauge": "^5.0.2",
+    "glob": "^11.0.2",
     "helmet": "^8.1.0",
+    "inflight": "^1.0.6",
+    "npmlog": "^7.0.1",
     "pg": "^8.15.6",
+    "rimraf": "^6.0.1",
     "uuid": "^11.1.0",
     "xss-clean": "^0.1.4"
   }

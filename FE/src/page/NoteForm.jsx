@@ -11,12 +11,12 @@ const NoteForm = () => {
   const [userId, setUserId] = useState(null);
   const [editMode, setEditMode] = useState(false);
   const [currentNoteId, setCurrentNoteId] = useState(null);
-  const API_BASE = import.meta.env.VITE_API;
+
 
   const fetchNotes = useCallback(async () => {
     try {
       console.log('Memanggil fetchNotes untuk user:', userId);
-      const res = await axios.get(`${API_BASE}/note/user/${userId}`);
+      const res = await axios.get(`${import.meta.env.VITE_API}/note/user/${userId}`);
       console.log('Data notes:', res.data);
       setNotes(res.data.data);
     } catch (error) {
@@ -24,7 +24,7 @@ const NoteForm = () => {
       setNotes([]);
       showMessage('Gagal mengambil data catatan', 'error');
     }
-  }, [API_BASE, userId]);
+  }, [userId]);
 
   useEffect(() => {
     const storedUserId = localStorage.getItem('user_id');
@@ -57,7 +57,7 @@ const NoteForm = () => {
     try {
       if (editMode) {
         // Update existing note
-        await axios.put(`${API_BASE}/note/${currentNoteId}`, {
+        await axios.put(`${import.meta.env.VITE_API}/note/${currentNoteId}`, {
           id: currentNoteId,
           title,
           content,
@@ -65,7 +65,7 @@ const NoteForm = () => {
         showMessage('Note berhasil diperbarui!', 'success');
       } else {
         // Create new note
-        await axios.post(`${API_BASE}/note/create`, {
+        await axios.post(`${import.meta.env.VITE_API}/note/create`, {
           user_id: userId,
           title,
           content,
@@ -98,7 +98,7 @@ const NoteForm = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`${API_BASE}/note/${id}`);
+      await axios.delete(`${import.meta.env.VITE_API}/note/${id}`);
       showMessage('Note berhasil dihapus!', 'success');
       fetchNotes();
       
@@ -133,7 +133,7 @@ const NoteForm = () => {
       </h2>
 
       {message && (
-        <div 
+        <div
           className={`p-2 ${
             messageType === 'success' ? 'bg-green-100 text-green-700' : 'bg-red-100 text-red-700'
           } rounded-sm mb-4`}
