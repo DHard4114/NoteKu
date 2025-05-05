@@ -11,7 +11,7 @@ const NoteCard = ({ id, title, content, onEdit, onDelete }) => {
                     {onEdit && (
                         <button
                             onClick={() => onEdit({ id, title, content })}
-                            className="px-3 py-1 bg-blue-500 text-white rounded-sm hover:bg-blue-600 transition text-sm"
+                            className="px-3 py-1 bg-[#6aa089] text-white font-mono rounded-sm hover:bg-[#4694a1] transition text-sm"
                         >
                             Edit
                         </button>
@@ -19,7 +19,7 @@ const NoteCard = ({ id, title, content, onEdit, onDelete }) => {
                     {onDelete && (
                         <button
                             onClick={() => onDelete(id)}
-                            className="px-3 py-1 bg-red-500 text-white rounded-sm hover:bg-red-600 transition text-sm"
+                            className="px-3 py-1 bg-[#b9322d] text-white font-mono rounded-sm hover:bg-[#030303] transition text-sm"
                         >
                             Delete
                         </button>
