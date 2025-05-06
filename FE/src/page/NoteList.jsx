@@ -143,7 +143,7 @@ const NoteList = () => {
     }
 
     return (
-        <div className="max-w-xl mx-auto p-4">
+        <div className="max-w-7xl mx-auto p-4">
             <h2 className="text-2xl font-bold font-mono text-[#000000] mb-4">
                 {editMode ? 'Edit Note' : 'Add New Note'}
             </h2>
@@ -203,7 +203,7 @@ const NoteList = () => {
             ) : error ? (
                 <p className="text-red-500">{error}</p>
             ) : (
-                <div className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
                     {notes.length > 0 ? (
                         notes.map((note) => (
                             <NoteCard
@@ -216,7 +216,7 @@ const NoteList = () => {
                             />
                         ))
                     ) : (
-                        <p className="text-[#303c3d]">You haven't created any notes yet. Start by adding one!</p>
+                        <p className="text-[#303c3d] col-span-full">You haven't created any notes yet. Start by adding one!</p>
                     )}
                 </div>
             )}
